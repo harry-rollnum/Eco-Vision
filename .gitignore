@@ -1,3 +1,12 @@
+# Ignore .env file
+.env
+
+# Ignore test.py
+test.py
+
+# Ignore __pycache__ in utils folder
+utils/__pycache__/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
