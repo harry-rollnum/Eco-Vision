@@ -24,8 +24,7 @@ eco-vision/
 ├── app.py                     # Main Streamlit app
 ├── utils/
 │   ├── azure_api.py           # Handles Azure Custom Vision prediction requests
-│   ├── database.py            # MongoDB logging and feedback utilities
-│   └── utils.py               # Static disposal tips & helper functions
+│   └── database.py            # MongoDB logging and feedback utilities
 ├── requirements.txt           # Required Python packages
 └── README.md                  # Project documentation
 ```
