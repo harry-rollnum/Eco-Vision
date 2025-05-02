@@ -1,90 +1,101 @@
-♻️ Eco Vision – Smart Waste Classifier with Azure & Streamlit
-Eco Vision is a smart, AI-powered garbage classification system that helps users identify types of waste in real-time using images or camera input. Built with Azure Custom Vision, MongoDB, and Streamlit, this app not only predicts waste categories but also provides eco-friendly disposal tips, gathers user feedback, and maintains logs for continuous learning.
+# ♻️ Eco Vision – Smart Waste Classifier with Azure & Streamlit
 
-🚀 Features
-✅ Classify garbage into 6 categories: Plastic, Paper, Glass, Metal, Cardboard, and Trash
-📸 Supports image upload, camera capture, and image URLs
-🔍 Uses Azure Custom Vision API for accurate predictions
-💬 Shows interactive disposal tips based on the prediction
-🗳️ Collects user feedback ("Correct"/"Incorrect") for model improvement
-📊 Logs predictions, feedback, and usage data to MongoDB
-📚 Has a Home Page explaining the importance of waste classification
-🧠 Designed to be expandable — chatbot, dynamic tips, and more coming soon!
+**Eco Vision** is a smart, AI-powered garbage classification system that helps users identify types of waste in real-time using images or camera input. Built with **Azure Custom Vision**, **MongoDB**, and **Streamlit**, this app not only predicts waste categories but also provides eco-friendly disposal tips, gathers user feedback, and maintains logs for continuous learning.
 
-📦 Folder Structure
-bash
-Copy
-Edit
+---
+
+## 🚀 Features
+
+- ✅ Classifies garbage into 6 categories: **Plastic**, **Paper**, **Glass**, **Metal**, **Cardboard**, and **Trash**
+- 📸 Supports **image upload**, **camera capture**, and **image URL input**
+- 🔍 Uses **Azure Custom Vision API** for accurate predictions
+- 💬 Displays interactive **disposal tips** based on the prediction
+- 🗳️ Collects **user feedback** ("Correct"/"Incorrect") to improve the model
+- 📊 Logs predictions, feedback, and usage data into **MongoDB**
+- 📚 Includes a **Home Page** explaining the importance of waste classification
+- 🧠 Designed to be expandable — chatbot, dynamic tips, and more coming soon!
+
+---
+
+## 📦 Folder Structure
+
+```
 eco-vision/
-├── app.py                # Main Streamlit app
-├── azure_api.py          # Handles prediction requests to Azure Custom Vision
-├── database.py           # MongoDB logging and feedback utilities
-├── utils.py              # Static disposal tips & helper functions
-├── requirements.txt      # Required Python packages
-└── README.md             # This file
-🧠 How It Works
-User Uploads Image / Captures from Camera / Pastes Image URL
+├── app.py             # Main Streamlit app
+├── azure_api.py       # Handles Azure Custom Vision prediction requests
+├── database.py        # MongoDB logging and feedback utilities
+├── utils.py           # Static disposal tips & helper functions
+├── requirements.txt   # Required Python packages
+└── README.md          # Project documentation
+```
 
-Image is sent to Azure Custom Vision API
+---
 
-The model returns predictions (e.g., "Plastic: 94%")
+## 🧠 How It Works
 
-The app shows:
+1. User uploads an image, captures it from the camera, or pastes an image URL.
+2. Image is sent to the **Azure Custom Vision API**.
+3. The model returns predictions (e.g., `"Plastic: 94%"`).
+4. The app displays:
+   - The prediction result
+   - Friendly disposal tips
+   - A feedback form
+5. All activity is logged in **MongoDB Atlas**.
 
-Prediction result
+---
 
-Friendly disposal tips
+## ⚙️ Setup Instructions
 
-A feedback form
+### 1. Clone the repository
 
-All activity is logged into a MongoDB Atlas cluster
-
-⚙️ Setup Instructions
-1. Clone the repo
-bash
-Copy
-Edit
+```bash
 git clone https://github.com/yourusername/eco-vision.git
 cd eco-vision
-2. Install dependencies
-bash
-Copy
-Edit
-pip install -r requirements.txt
-3. Set your secrets
-Create a .env file or set these environment variables:
+```
 
-env
-Copy
-Edit
-PREDICTION_KEY=1zbHNYawKdX2G8rnAMaKHBmoI7btqVQ7jv86RZfBMQwHAVuPBFNkJQQJ99BDACGhslBXJ3w3AAAIACOGwGPW
-ENDPOINT=https://ecovisioncvprojectinstance-prediction.cognitiveservices.azure.com
-PROJECT_ID=3ea00f4e-5165-4fb6-aae8-34c5e961e458
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Set your environment variables
+
+Create a `.env` file in the root directory with the following content (replace placeholders with actual values):
+
+```
+PREDICTION_KEY=your_azure_prediction_key
+ENDPOINT=your_azure_endpoint_url
+PROJECT_ID=your_project_id
 ITERATION_NAME=Eco_Vision
 MONGODB_URI=mongodb+srv://<username>:<password>@eco-vision.mongodb.net/?retryWrites=true&w=majority&appName=eco-vision
-4. Run the app
-bash
-Copy
-Edit
+```
+
+### 4. Run the app
+
+```bash
 streamlit run app.py
-🔍 Example Prediction Flow
-Input: 🖼️ An image of a plastic bottle
+```
 
-Output:
+---
 
-Predicted: Plastic (94%)
+## 🔍 Example Prediction Flow
 
-Disposal Tip: Rinse and place in a plastic recycling bin ♻️
+**Input**: 🖼️ Image of a plastic bottle  
+**Output**:
 
-Feedback Box: ✅ Correct | ❌ Incorrect
+- **Predicted**: Plastic (94%)
+- **Disposal Tip**: Rinse and place in a plastic recycling bin ♻️
+- **Feedback Box**: ✅ Correct | ❌ Incorrect
+- **Logs**: Stored in MongoDB with timestamp, result, and feedback
 
-Logs: Stored in MongoDB with timestamp, result, and feedback
+---
 
-📊 MongoDB Structure
-Prediction Log Document:
-json
-Copy
-Edit
+## 📊 MongoDB Document Structure
+
+### Prediction Log
+
+```json
 {
   "filename": "plastic_bottle.jpg",
   "result": [
@@ -92,39 +103,45 @@ Edit
   ],
   "timestamp": "2025-05-02T10:00:00Z"
 }
-Feedback Document:
-json
-Copy
-Edit
+```
+
+### Feedback Log
+
+```json
 {
   "filename": "plastic_bottle.jpg",
   "feedback": "Incorrect",
   "timestamp": "2025-05-02T10:05:00Z"
 }
-💡 Future Enhancements
-🔄 Use user-submitted images (with incorrect predictions) for retraining
+```
 
-💬 Add a domain-limited chatbot for FAQs & eco-tips
+---
 
-📊 Dynamic dashboard for admin insights using Streamlit/Mongo
+## 💡 Future Enhancements
 
-🌍 Multilingual support for eco-awareness expansion
+- 🔄 Retrain model with user-submitted images marked as incorrect
+- 💬 Add a chatbot for FAQs & eco-tips
+- 📊 Dynamic admin dashboard using Streamlit and MongoDB
+- 🌍 Multilingual support for wider eco-awareness
 
-🧠 Why Garbage Classification?
-Proper waste classification:
+---
 
-Promotes recycling and reuse 🌱
+## 🧠 Why Garbage Classification?
 
-Reduces landfill impact 🗑️
+- Promotes **recycling** and **reuse** 🌱
+- Reduces **landfill impact** 🗑️
+- Ensures safe disposal of **hazardous materials** ⚠️
+- Supports a **cleaner ecosystem** and **sustainable living** 🌎
 
-Ensures safe disposal of hazardous materials ⚠️
+---
 
-Supports cleaner ecosystems and sustainable living 🌎
+## 🤝 Contributing
 
-🤝 Contributing
-Pull requests are welcome! For major changes, please open an issue first.
-Ideas, issues, and stars ⭐ are appreciated!
+Pull requests are welcome! For major changes, please open an issue first.  
+Ideas, issues, and ⭐ stars are appreciated!
 
-📜 License
+---
+
+## 📜 License
+
 MIT License © 2025 Sai Kumar Garlapati
-
