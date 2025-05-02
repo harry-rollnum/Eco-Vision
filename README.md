@@ -142,6 +142,16 @@ Ideas, issues, and ⭐ stars are appreciated!
 
 ---
 
+---
+
+🧪 Note from the Developer (aka Me 🤓):
+I'm a student, and this project is running on a free-tier Azure account, so if you ever face prediction limits or occasional connection issues, don't rage-quit or cuss the app!
+It’s not the AI’s fault — blame the free credits 😅
+I'm working on improving and scaling it as time and budget allow. Thanks for your patience and support! 💙♻️
+You can check out at 🔗https://eco-vision.streamlit.app/
+
+---
+
 ## 📜 License
 
 MIT License © 2025 Sai Kumar Garlapati
