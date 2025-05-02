@@ -1,68 +1,62 @@
+♻️ Eco Vision – Smart Waste Classifier with Azure & Streamlit
+Eco Vision is a smart, AI-powered garbage classification system that helps users identify types of waste in real-time using images or camera input. Built with Azure Custom Vision, MongoDB, and Streamlit, this app not only predicts waste categories but also provides eco-friendly disposal tips, gathers user feedback, and maintains logs for continuous learning.
 
-# ♻️ Eco Vision – Smart Waste Classifier with Azure & Streamlit
-
-Eco Vision is a smart, AI-powered garbage classification system that helps users identify types of waste in real-time using images or camera input. Built with **Azure Custom Vision**, **MongoDB**, and **Streamlit**, this app not only predicts waste categories but also provides **eco-friendly disposal tips**, gathers **user feedback**, and maintains logs for continuous learning.
-
----
-
-## 🚀 Features
-
-✅ Classify garbage into **6 categories**: `Plastic`, `Paper`, `Glass`, `Metal`, `Cardboard`, and `Trash`  
-📸 Supports **image upload**, **camera capture**, and **image URLs**  
-🔍 Uses **Azure Custom Vision API** for accurate predictions  
-💬 Shows **interactive disposal tips** based on the prediction  
-🗳️ Collects **user feedback** ("Correct"/"Incorrect") for model improvement  
-📊 Logs predictions, feedback, and usage data to **MongoDB**  
-📚 Has a **Home Page** explaining the importance of waste classification  
+🚀 Features
+✅ Classify garbage into 6 categories: Plastic, Paper, Glass, Metal, Cardboard, and Trash
+📸 Supports image upload, camera capture, and image URLs
+🔍 Uses Azure Custom Vision API for accurate predictions
+💬 Shows interactive disposal tips based on the prediction
+🗳️ Collects user feedback ("Correct"/"Incorrect") for model improvement
+📊 Logs predictions, feedback, and usage data to MongoDB
+📚 Has a Home Page explaining the importance of waste classification
 🧠 Designed to be expandable — chatbot, dynamic tips, and more coming soon!
 
----
-
-## 📦 Folder Structure
-
-eco-vision/ ├── app.py # Main Streamlit app ├── azure_api.py # Handles prediction requests to Azure Custom Vision ├── database.py # MongoDB logging and feedback utilities ├── utils.py # Static disposal tips & helper functions ├── requirements.txt # Required Python packages └── README.md # This file
-
-yaml
-Always show details
-
+📦 Folder Structure
+bash
 Copy
+Edit
+eco-vision/
+├── app.py                # Main Streamlit app
+├── azure_api.py          # Handles prediction requests to Azure Custom Vision
+├── database.py           # MongoDB logging and feedback utilities
+├── utils.py              # Static disposal tips & helper functions
+├── requirements.txt      # Required Python packages
+└── README.md             # This file
+🧠 How It Works
+User Uploads Image / Captures from Camera / Pastes Image URL
 
----
+Image is sent to Azure Custom Vision API
 
+The model returns predictions (e.g., "Plastic: 94%")
 
-## 🧠 How It Works
+The app shows:
 
-1. **User Uploads Image / Captures from Camera / Pastes Image URL**
-2. Image is sent to **Azure Custom Vision** API
-3. The model returns predictions (e.g., "Plastic: 94%")
-4. The app shows:
-   - Prediction result
-   - Friendly disposal tips
-   - A feedback form
-5. All activity is logged into a **MongoDB Atlas** cluster
+Prediction result
 
----
+Friendly disposal tips
 
+A feedback form
 
-## ⚙️ Setup Instructions
+All activity is logged into a MongoDB Atlas cluster
 
-### 1. Clone the repo
-```bash
+⚙️ Setup Instructions
+1. Clone the repo
+bash
+Copy
+Edit
 git clone https://github.com/yourusername/eco-vision.git
 cd eco-vision
 2. Install dependencies
 bash
-Always show details
-
 Copy
+Edit
 pip install -r requirements.txt
 3. Set your secrets
 Create a .env file or set these environment variables:
 
 env
-Always show details
-
 Copy
+Edit
 PREDICTION_KEY=1zbHNYawKdX2G8rnAMaKHBmoI7btqVQ7jv86RZfBMQwHAVuPBFNkJQQJ99BDACGhslBXJ3w3AAAIACOGwGPW
 ENDPOINT=https://ecovisioncvprojectinstance-prediction.cognitiveservices.azure.com
 PROJECT_ID=3ea00f4e-5165-4fb6-aae8-34c5e961e458
@@ -70,9 +64,8 @@ ITERATION_NAME=Eco_Vision
 MONGODB_URI=mongodb+srv://<username>:<password>@eco-vision.mongodb.net/?retryWrites=true&w=majority&appName=eco-vision
 4. Run the app
 bash
-Always show details
-
 Copy
+Edit
 streamlit run app.py
 🔍 Example Prediction Flow
 Input: 🖼️ An image of a plastic bottle
@@ -90,9 +83,8 @@ Logs: Stored in MongoDB with timestamp, result, and feedback
 📊 MongoDB Structure
 Prediction Log Document:
 json
-Always show details
-
 Copy
+Edit
 {
   "filename": "plastic_bottle.jpg",
   "result": [
@@ -102,9 +94,8 @@ Copy
 }
 Feedback Document:
 json
-Always show details
-
 Copy
+Edit
 {
   "filename": "plastic_bottle.jpg",
   "feedback": "Incorrect",
@@ -136,3 +127,4 @@ Ideas, issues, and stars ⭐ are appreciated!
 
 📜 License
 MIT License © 2025 Sai Kumar Garlapati
+
